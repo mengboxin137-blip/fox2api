@@ -3,8 +3,8 @@ package repository
 import (
 	"strconv"
 
-	"github.com/Wei-Shaw/sub2api/ent/predicate"
-	"github.com/Wei-Shaw/sub2api/ent/proxy"
+	"github.com/MACOS-DO/sub4api/ent/predicate"
+	"github.com/MACOS-DO/sub4api/ent/proxy"
 )
 
 // proxyOptionSearchPredicate 数字关键词同时匹配端口和 ID；文本搜索保持参数化。

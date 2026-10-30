@@ -160,6 +160,7 @@ func TestAccountFromServiceBPSCredentialStateFullAndLite(t *testing.T) {
 	source.Credentials["expires_at"] = now.Add(-time.Hour).Format(time.RFC3339)
 	require.Equal(t, "expired", AccountFromService(source).BPSCredentialState.Status)
 	require.Equal(t, service.StatusActive, source.Status)
+}
 
 func TestAccountFromService_RedactsGrokModelDiagnostics(t *testing.T) {
 	src := &service.Account{

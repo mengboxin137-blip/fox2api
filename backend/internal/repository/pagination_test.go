@@ -4,7 +4,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/Wei-Shaw/sub2api/internal/pkg/pagination"
+	"github.com/MACOS-DO/sub4api/internal/pkg/pagination"
 	"github.com/stretchr/testify/require"
 )
 

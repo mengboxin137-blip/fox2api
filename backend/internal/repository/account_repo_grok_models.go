@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"errors"
 
-	dbent "github.com/Wei-Shaw/sub2api/ent"
-	"github.com/Wei-Shaw/sub2api/internal/service"
+	dbent "github.com/MACOS-DO/sub4api/ent"
+	"github.com/MACOS-DO/sub4api/internal/service"
 )
 
 var errGrokCatalogInvalidJSON = errors.New("grok model catalog: invalid json")

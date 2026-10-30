@@ -13,7 +13,6 @@ import (
 	"time"
 
 	"github.com/MACOS-DO/sub4api/internal/pkg/xai"
-	"github.com/tidwall/gjson"
 )
 
 const (
