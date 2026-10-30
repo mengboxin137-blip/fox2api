@@ -3411,7 +3411,8 @@
 <script setup lang="ts">
 import OpenAIBPSAccountFields from './OpenAIBPSAccountFields.vue'
 import { newBPSAccountDraft, bpsCredentials } from '@/utils/openaiBps'
-import { ref, reactive, computed, watch, nextTick, onBeforeUnmount, onMounted } from 'vue'import { useI18n } from 'vue-i18n'
+import { ref, reactive, computed, watch, nextTick, onBeforeUnmount, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useAppStore } from '@/stores/app'
 
 import { adminAPI } from '@/api/admin'

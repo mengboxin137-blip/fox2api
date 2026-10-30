@@ -1243,6 +1243,7 @@ export interface OpenAIRequestTimezoneDetection {
   proxy_id?: number
   detected_at: string
   error?: string
+}
 export interface GrokCatalogScope {
   account_id: number
   account_type: string
