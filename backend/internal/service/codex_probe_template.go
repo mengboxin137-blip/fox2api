@@ -268,7 +268,7 @@ func (s *OpenAIGatewayService) buildCodexProbeRequest(ctx context.Context, accou
 	if err != nil {
 		return nil, nil, ErrCodexProbeIdentity
 	}
-	template := ctx.Value(codexProbeTemplateContextKey{}).(*CodexProbeTemplate)
+	template := ctx.Value(codexProbeTemplateContextKey{}).(*CodexProbeTemplate) //nolint:errcheck
 	return template.render(model, challenge.Prompt, account.OpenAIRequestTimezone(), identity)
 }
 

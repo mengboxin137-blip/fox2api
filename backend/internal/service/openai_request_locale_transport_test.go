@@ -91,7 +91,7 @@ func TestOpenAIRequestLocaleWebSocketFirstAndLaterTurns(t *testing.T) {
 				return body
 			}
 			client := dialPassthroughLifecycleClientWithPayload(t, server, string(payload(texts[0])))
-			defer client.CloseNow()
+			defer client.CloseNow() //nolint:errcheck
 			for turn, text := range texts {
 				if turn > 0 {
 					body, err := sjson.SetBytes(payload(text), "previous_response_id", "resp_locale_0")

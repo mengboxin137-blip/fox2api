@@ -44,6 +44,6 @@ func TestCodexTicketHarvestRateLimitBoundary(t *testing.T) {
 	require.False(t, openAICodexTicketHarvestLimited(account, "gpt-6-sol", now))
 	account.Extra["allow_overages"] = true
 	require.False(t, openAICodexTicketHarvestLimited(account, "gpt-6-astra", now))
-	account.Extra["model_rate_limits"].(map[string]any)["AICredits"] = map[string]any{"rate_limit_reset_at": reset.Format(time.RFC3339)}
+	account.Extra["model_rate_limits"].(map[string]any)["AICredits"] = map[string]any{"rate_limit_reset_at": reset.Format(time.RFC3339)} //nolint:errcheck
 	require.True(t, openAICodexTicketHarvestLimited(account, "gpt-6-astra", now))
 }

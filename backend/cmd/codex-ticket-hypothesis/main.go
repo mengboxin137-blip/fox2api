@@ -108,7 +108,7 @@ func readEnvFile(path string) (map[string]string, error) {
 	if err != nil {
 		return nil, fmt.Errorf("open dedicated .env: %w", err)
 	}
-	defer file.Close()
+	defer file.Close() //nolint:errcheck
 	values := make(map[string]string)
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {

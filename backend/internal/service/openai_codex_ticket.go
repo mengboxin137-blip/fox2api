@@ -479,7 +479,7 @@ func (s *OpenAIGatewayService) fireOpenAICodexTicketProbe(ctx context.Context, a
 		}
 		eventType := gjson.Get(payload, "type").String()
 		if eventType == "response.output_text.delta" {
-			deltas.WriteString(gjson.Get(payload, "delta").String())
+			deltas.WriteString(gjson.Get(payload, "delta").String()) //nolint:errcheck
 		}
 		if eventType == "response.completed" {
 			gjson.Get(payload, "response.output").ForEach(func(_, message gjson.Result) bool {

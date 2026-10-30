@@ -254,7 +254,7 @@ func (runner *CodexHypothesisRunner) checkReplayIdentity(request *http.Request) 
 	if err != nil {
 		return fmt.Errorf("read replay request body: %w", err)
 	}
-	defer reader.Close()
+	defer reader.Close() //nolint:errcheck
 	var body struct {
 		PromptCacheKey string            `json:"prompt_cache_key"`
 		ClientMetadata map[string]string `json:"client_metadata"`
@@ -363,13 +363,13 @@ func readCodexHypothesisStream(body io.Reader) (string, error) {
 		}
 		switch event.Type {
 		case "response.output_text.delta":
-			output.WriteString(event.Delta)
+			output.WriteString(event.Delta) //nolint:errcheck
 		case "response.completed":
 			completed = true
 			if output.Len() == 0 {
 				for _, item := range event.Response.Output {
 					for _, content := range item.Content {
-						output.WriteString(content.Text)
+						output.WriteString(content.Text) //nolint:errcheck
 					}
 				}
 			}
@@ -488,7 +488,7 @@ func (runner *CodexHypothesisRunner) RunChallenge(ctx context.Context, challenge
 	if response == nil {
 		return result, errors.New("upstream returned a nil response")
 	}
-	defer response.Body.Close()
+	defer response.Body.Close() //nolint:errcheck
 	result.StatusCode = response.StatusCode
 	result.ResponseState = response.Header.Get(openAICodexTurnStateHeader)
 	result.ResponseCookies = append([]string(nil), response.Header.Values("Set-Cookie")...)

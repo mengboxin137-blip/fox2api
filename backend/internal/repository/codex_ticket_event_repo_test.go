@@ -13,7 +13,7 @@ import (
 func TestCodexTicketEventsExposeMetadataOnly(t *testing.T) {
 	db, mock, err := sqlmock.New()
 	require.NoError(t, err)
-	defer db.Close()
+	defer db.Close() //nolint:errcheck
 	repo := &codexTicketAttemptRepository{db: db}
 	end := time.Now().UTC()
 	start := end.Add(-90 * 24 * time.Hour)

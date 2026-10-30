@@ -76,15 +76,15 @@ func TestOpenAIBPSAdditionalToolsAndReplay(t *testing.T) {
 	original := bpsJSON(native)
 	response, err := s.bpsTransformResponse(c.Request.Context(), a, prepared, bpsResponse(native))
 	require.NoError(t, err)
-	call := response["output"].([]any)[0]
-	input := source["input"].([]any)
+	call := response["output"].([]any)[0] //nolint:errcheck
+	input := source["input"].([]any) //nolint:errcheck
 	source["input"] = append(input, map[string]any{"type": "reasoning", "id": "rs_original", "summary": []any{"not-replayed"}, "encrypted_content": "opaque-ciphertext"}, call, map[string]any{"type": "custom_tool_call_output", "id": "ctco_client", "call_id": "call_custom", "output": "applied"})
 	replay, err := s.prepareOpenAIBPS(c.Request.Context(), c, a, []byte(bpsJSON(source)))
 	require.NoError(t, err)
 	var wire map[string]any
 	require.NoError(t, bpsDecode(replay.Body, &wire))
-	items := wire["input"].([]any)
-	reasoning := items[len(items)-3].(map[string]any)
+	items := wire["input"].([]any) //nolint:errcheck
+	reasoning := items[len(items)-3].(map[string]any) //nolint:errcheck
 	require.Equal(t, map[string]any{"type": "reasoning", "summary": []any{}, "encrypted_content": "opaque-ciphertext"}, reasoning)
 	require.JSONEq(t, original, bpsJSON(items[len(items)-2]))
 	result := items[len(items)-1].(map[string]any)

@@ -201,9 +201,9 @@ func readBPSEvents(resp *http.Response, maxSize int, consume func(string, map[st
 		}
 		if strings.HasPrefix(line, "data:") {
 			if data.Len() > 0 {
-				data.WriteByte('\n')
+				_ = data.WriteByte('\n')
 			}
-			data.WriteString(strings.TrimPrefix(strings.TrimPrefix(line, "data:"), " "))
+			data.WriteString(strings.TrimPrefix(strings.TrimPrefix(line, "data:"), " ")) //nolint:errcheck
 			if data.Len() > maxSize {
 				return fmt.Errorf("BPS event exceeds maximum size")
 			}

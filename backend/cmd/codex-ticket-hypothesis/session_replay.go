@@ -47,7 +47,7 @@ func loadSessionReplay(sessionPath, envPath string) (*service.CodexHypothesisRep
 	if err != nil {
 		return nil, fmt.Errorf("open replay session: %w", err)
 	}
-	defer file.Close()
+	defer file.Close() //nolint:errcheck
 	info, err := file.Stat()
 	if err != nil || info.Size() > maximumReplaySize {
 		return nil, errors.New("replay session is unreadable or too large")

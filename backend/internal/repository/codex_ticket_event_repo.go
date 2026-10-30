@@ -42,7 +42,7 @@ func (r *codexTicketAttemptRepository) ListEvents(ctx context.Context, accountID
 	if err != nil {
 		return nil, 0, err
 	}
-	defer rows.Close()
+	defer rows.Close() //nolint:errcheck
 	result, err := scanCodexTicketEvents(rows, size)
 	return result, total, err
 }
@@ -89,7 +89,7 @@ func (r *codexTicketAttemptRepository) listFilteredEvents(ctx context.Context, a
 	if err != nil {
 		return nil, 0, err
 	}
-	defer rows.Close()
+	defer rows.Close() //nolint:errcheck
 	result, err := scanCodexTicketEvents(rows, size)
 	return result, total, err
 }
