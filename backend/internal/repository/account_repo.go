@@ -685,7 +685,7 @@ func lockAndMergeAccountProbeExtra(
 			),
 			extra -> 'opencode_go_usage_auto_refresh',
 			extra -> 'opencode_go_usage_snapshot',
-			COALESCE(extra, '{}'::jsonb)
+			COALESCE(extra, '{}'::jsonb),
 			extra -> 'grok_observed_models',
 			extra -> 'upstream_model_metadata'
 		FROM accounts
