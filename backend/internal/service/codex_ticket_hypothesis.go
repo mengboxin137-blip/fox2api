@@ -297,7 +297,7 @@ func (runner *CodexHypothesisRunner) checkHeaders(request *http.Request, tickete
 		return errors.New("normal request path changed method, URL or Host")
 	}
 	if request.Header.Get("User-Agent") != buildCodexCLIUserAgent(codexHypothesisClientVersion) ||
-		request.Header.Get("originator") != "codex-tui" || request.Header.Get("version") != codexHypothesisClientVersion {
+		request.Header.Get("originator") != "codex_cli_rs" || request.Header.Get("version") != codexHypothesisClientVersion {
 		return errors.New("outbound Codex identity does not match pinned version")
 	}
 	runner.baselineMu.Lock()
