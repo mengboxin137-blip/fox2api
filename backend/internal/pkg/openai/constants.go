@@ -234,25 +234,6 @@ func IsGPT61SolModelSpelling(model string) bool {
 	}
 }
 
-// IsGPT62SolModelSpelling recognizes the published model and local effort/compact
-// spellings. Invalid effort suffixes remain identifiable for request validation.
-func IsGPT62SolModelSpelling(model string) bool {
-	canonical := CanonicalizeOpenAIModelAliasSpelling(model)
-	if canonical == "gpt-6.2-sol" {
-		return true
-	}
-	suffix, ok := strings.CutPrefix(canonical, "gpt-6.2-sol-")
-	if !ok {
-		return false
-	}
-	switch suffix {
-	case "none", "minimal", "low", "medium", "high", "xhigh", "max", "openai-compact":
-		return true
-	default:
-		return false
-	}
-}
-
 // IsGPT61TerraModelSpelling recognizes the published model and local effort/compact
 // spellings. Invalid effort suffixes remain identifiable for request validation.
 func IsGPT61TerraModelSpelling(model string) bool {
