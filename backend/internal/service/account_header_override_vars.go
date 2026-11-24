@@ -8,8 +8,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/Wei-Shaw/sub2api/internal/pkg/ctxkey"
-	infraerrors "github.com/Wei-Shaw/sub2api/internal/pkg/errors"
+	"github.com/MACOS-DO/sub4api/internal/pkg/ctxkey"
+	infraerrors "github.com/MACOS-DO/sub4api/internal/pkg/errors"
 
 	"golang.org/x/net/http/httpguts"
 )

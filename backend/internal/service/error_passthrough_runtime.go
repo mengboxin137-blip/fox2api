@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/Wei-Shaw/sub2api/internal/model"
+	"github.com/MACOS-DO/sub4api/internal/model"
 	"github.com/gin-gonic/gin"
 )
 
