@@ -9,7 +9,7 @@ import (
 	"unicode/utf8"
 	"unsafe"
 
-	"github.com/Wei-Shaw/sub2api/internal/pkg/apicompat"
+	"github.com/MACOS-DO/sub4api/internal/pkg/apicompat"
 	"github.com/gin-gonic/gin"
 	"github.com/tidwall/gjson"
 )
